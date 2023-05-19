@@ -329,8 +329,9 @@ class AffineTransform3D:
         #https://github.com/tlambert03/napari-ndtiffs/blob/092acbd92bfdbf3ecb1eb9c7fc146411ad9e6aae/napari_ndtiffs/affine.py#L57
         new_dz = math.sin(angle_in_degrees * math.pi / 180.0) * voxel_size_z
         scale_factor_z = (new_dz / voxel_size_x) * scale_factor
+        scale_factor_y = (voxel_size_y / voxel_size_x) * scale_factor
 
-        self.scale(scale_x=scale_factor, scale_y=scale_factor, scale_z=scale_factor_z)
+        self.scale(scale_x=scale_factor, scale_y=scale_factor_y, scale_z=scale_factor_z)
 
         # correct orientation so that the new Z-plane goes proximal-distal from the objective.
         self.rotate(angle_in_degrees =  angle_in_degrees, axis=1)      
